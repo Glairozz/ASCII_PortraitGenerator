@@ -1,0 +1,367 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Courier New', monospace;
+    line-height: 1.6;
+    color: #333;
+    background: #1a1a1a;
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Landing Page Styles */
+.landing-page {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-content {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+    z-index: 2;
+}
+
+.ascii-demo {
+    flex: 0 0 auto;
+}
+
+.ascii-demo pre {
+    color: #fff;
+    background: #111;
+    padding: 20px;
+    border-radius: 10px;
+    font-size: 10px;
+    line-height: 1;
+    letter-spacing: 0.1em;
+    border: 2px solid #333;
+    animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+}
+
+.hero-text {
+    flex: 1;
+    color: #fff;
+    text-align: left;
+}
+
+.main-title {
+    font-size: 4rem;
+    margin-bottom: 20px;
+    color: #fff;
+    font-weight: bold;
+    animation: slideInRight 0.8s ease-out;
+}
+
+.subtitle {
+    font-size: 1.4rem;
+    margin-bottom: 30px;
+    color: #ccc;
+    animation: slideInRight 0.8s ease-out 0.2s both;
+}
+
+.features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 40px;
+    animation: slideInRight 0.8s ease-out 0.4s both;
+}
+
+.feature {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.1rem;
+    color: #ccc;
+}
+
+.feature-icon {
+    font-size: 1.3rem;
+}
+
+.start-button {
+    padding: 18px 40px;
+    font-size: 1.3rem;
+    border: 2px solid #fff;
+    border-radius: 50px;
+    background: transparent;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    animation: slideInRight 0.8s ease-out 0.6s both;
+}
+
+.start-button:hover {
+    background: #fff;
+    color: #000;
+    transform: translateY(-2px);
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 30px;
+    color: #666;
+    text-align: center;
+    opacity: 0.7;
+    animation: pulse 2s ease-in-out infinite;
+}
+
+.scroll-indicator span {
+    font-size: 2rem;
+    display: block;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 0.7; }
+    50% { opacity: 1; }
+}
+
+/* Generator Section Styles */
+.generator-section {
+    min-height: 100vh;
+    background: #1a1a1a;
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #fff;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 1.1rem;
+    opacity: 0.8;
+}
+
+.controls {
+    background: #2a2a2a;
+    padding: 25px;
+    border-radius: 10px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+}
+
+input[type="file"] {
+    padding: 10px;
+    border: 1px solid #666;
+    border-radius: 5px;
+    background: #222;
+    color: #fff;
+    cursor: pointer;
+}
+
+.sliders {
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+}
+
+.slider-group {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.slider-group label {
+    color: #ccc;
+    font-size: 0.9rem;
+}
+
+input[type="range"] {
+    width: 150px;
+    height: 6px;
+    background: #333;
+    outline: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background: #666;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+button {
+    padding: 12px 24px;
+    border: 1px solid #666;
+    border-radius: 5px;
+    background: #222;
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background: #333;
+    border-color: #999;
+}
+
+button:disabled {
+    background: #666;
+    cursor: not-allowed;
+}
+
+.preview-section {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.image-preview, .ascii-output {
+    background: #111;
+    padding: 20px;
+    border-radius: 10px;
+    border: 1px solid #333;
+}
+
+.image-preview h3, .ascii-output h3 {
+    color: #fff;
+    margin-bottom: 15px;
+    text-align: center;
+}
+
+#previewImg {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto;
+}
+
+#defaultPreview {
+    color: #666;
+    text-align: center;
+    padding: 40px;
+    border: 1px dashed #444;
+    border-radius: 5px;
+}
+
+#asciiResult {
+    background: #000;
+    color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    white-space: pre;
+    overflow-x: auto;
+    font-family: 'Courier New', monospace;
+    line-height: 0.6;
+    letter-spacing: 0.02em;
+    min-height: 200px;
+    border: 1px solid #333;
+}
+
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+    
+    header h1 {
+        font-size: 2rem;
+    }
+    
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    
+    .sliders {
+        justify-content: center;
+    }
+    
+    .preview-section {
+        grid-template-columns: 1fr;
+    }
+    
+    .hero-content {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+    
+    .main-title {
+        font-size: 2.5rem;
+    }
+    
+    .features {
+        grid-template-columns: 1fr;
+        justify-items: center;
+    }
+}
+
+.loading {
+    text-align: center;
+    color: #666;
+    padding: 20px;
+}
+
+.error {
+    color: #666;
+    background: #111;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+    border: 1px solid #333;
+}
+
+.back-button {
+    background: #111;
+    color: #666;
+    padding: 10px 20px;
+    margin-left: 10px;
+    border-color: #444;
+}
+
+.back-button:hover {
+    background: #222;
+    border-color: #666;
+}
