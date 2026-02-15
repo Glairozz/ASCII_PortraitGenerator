@@ -58,6 +58,8 @@ class ASCIIGenerator {
     loadDefaultImage() {
         this.previewImg.src = 'me.jpg';
         this.previewImg.style.display = 'block';
+        this.previewImg.style.maxWidth = '280px';
+        this.previewImg.style.maxHeight = '280px';
         document.getElementById('defaultPreview').style.display = 'none';
         this.previewImg.onload = () => {
             this.generateBtn.disabled = false;
@@ -75,6 +77,8 @@ class ASCIIGenerator {
             reader.onload = (event) => {
                 this.previewImg.src = event.target.result;
                 this.previewImg.style.display = 'block';
+                this.previewImg.style.maxWidth = '280px';
+                this.previewImg.style.maxHeight = '280px';
                 document.getElementById('defaultPreview').style.display = 'none';
                 this.generateBtn.disabled = false;
             };
