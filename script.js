@@ -15,6 +15,8 @@ class ASCIIGenerator {
         this.brightnessSlider = document.getElementById('brightness');
         this.contrastSlider = document.getElementById('contrast');
         this.fontSizeSlider = document.getElementById('fontSize');
+        this.widthSlider = document.getElementById('width');
+        this.invertCheckbox = document.getElementById('invertColors');
         this.generateBtn = document.getElementById('generateBtn');
         this.downloadBtn = document.getElementById('downloadBtn');
         this.previewImg = document.getElementById('previewImg');
@@ -39,6 +41,9 @@ class ASCIIGenerator {
         this.fontSizeSlider.addEventListener('input', (e) => {
             document.getElementById('fontSizeValue').textContent = e.target.value;
             this.asciiResult.style.fontSize = e.target.value + 'px';
+        });
+        this.widthSlider.addEventListener('input', (e) => {
+            document.getElementById('widthValue').textContent = e.target.value;
         });
         this.generateBtn.addEventListener('click', () => this.generateASCII());
         this.downloadBtn.addEventListener('click', () => this.downloadASCII());
@@ -87,13 +92,19 @@ class ASCIIGenerator {
     }
 
     generateASCII() {
+        if (!this.previewImg.src || this.previewImg.style.display === 'none') {
+            this.asciiResult.innerHTML = '<div class="error">Please upload an image first.</div>';
+            return;
+        }
+        
         this.asciiResult.innerHTML = '<div class="loading">Generating ASCII art...</div>';
         
         setTimeout(() => {
             try {
                 const img = this.previewImg;
-                const width = 300;
-                const height = Math.floor((img.naturalHeight / img.naturalWidth) * width * 0.35);
+                const width = parseInt(this.widthSlider.value);
+                const height = Math.floor((img.naturalHeight / img.naturalWidth) * width * 0.55);
+                const invert = this.invertCheckbox.checked;
                 
                 this.canvas.width = width;
                 this.canvas.height = height;
@@ -112,31 +123,11 @@ class ASCIIGenerator {
                         const g = pixels[offset + 1];
                         const b = pixels[offset + 2];
                         
-                        // Calculate brightness with weighted grayscale for better detail
                         const brightness = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+                        const adjustedBrightness = invert ? 1 - brightness : brightness;
                         
-                        // Apply contrast enhancement and sharpening
-                        let adjustedBrightness = brightness;
-                        
-                        // Apply local contrast enhancement
-                        const surroundingPixels = this.getSurroundingBrightness(pixels, x, y, width, height);
-                        const localContrast = brightness - surroundingPixels;
-                        adjustedBrightness = brightness + localContrast * 0.3;
-                        
-                        // Apply gamma correction
-                        adjustedBrightness = Math.pow(Math.max(0, Math.min(1, adjustedBrightness)), 0.6);
-                        
-                        // Anti-aliasing with sub-pixel precision
-                        const preciseIndex = adjustedBrightness * (this.asciiChars.length - 1);
-                        const charIndex = Math.floor(preciseIndex);
-                        const fractional = preciseIndex - charIndex;
-                        
-                        // Add dithering for smoother gradients
-                        if (fractional > 0.5 && Math.random() > (1 - fractional)) {
-                            ascii += this.asciiChars[Math.min(this.asciiChars.length - 1, this.asciiChars.length - 1 - charIndex - 1)];
-                        } else {
-                            ascii += this.asciiChars[this.asciiChars.length - 1 - charIndex];
-                        }
+                        const charIndex = Math.floor(adjustedBrightness * (this.asciiChars.length - 1));
+                        ascii += this.asciiChars[invert ? this.asciiChars.length - 1 - charIndex : charIndex];
                     }
                     ascii += '\n';
                 }
@@ -147,34 +138,9 @@ class ASCIIGenerator {
                 
             } catch (error) {
                 this.asciiResult.innerHTML = '<div class="error">Error generating ASCII art. Please try again.</div>';
+                console.error('ASCII Generation Error:', error);
             }
-        }, 100);
-    }
-
-    getSurroundingBrightness(pixels, x, y, width, height) {
-        let totalBrightness = 0;
-        let count = 0;
-        
-        // Sample surrounding pixels for edge detection
-        for (let dy = -1; dy <= 1; dy++) {
-            for (let dx = -1; dx <= 1; dx++) {
-                if (dx === 0 && dy === 0) continue;
-                
-                const nx = x + dx;
-                const ny = y + dy;
-                
-                if (nx >= 0 && nx < width && ny >= 0 && ny < height) {
-                    const offset = (ny * width + nx) * 4;
-                    const r = pixels[offset];
-                    const g = pixels[offset + 1];
-                    const b = pixels[offset + 2];
-                    totalBrightness += (0.299 * r + 0.587 * g + 0.114 * b) / 255;
-                    count++;
-                }
-            }
-        }
-        
-        return count > 0 ? totalBrightness / count : 0;
+        }, 50);
     }
 
     downloadASCII() {

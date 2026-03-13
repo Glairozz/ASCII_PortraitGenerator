@@ -241,6 +241,27 @@ input[type="file"] {
     letter-spacing: 1px;
 }
 
+.checkbox-group {
+    flex-direction: row !important;
+    align-items: center !important;
+}
+
+.checkbox-group label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+}
+
 input[type="range"] {
     width: 120px;
     height: 4px;

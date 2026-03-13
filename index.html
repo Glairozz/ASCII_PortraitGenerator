@@ -46,19 +46,6 @@
                         <span>Download Ready</span>
                     </div>
                 </div>
-                    <div class="feature">
-                        <span class="feature-icon">*</span>
-                        <span>High Detail Output</span>
-                    </div>
-                    <div class="feature">
-                        <span class="feature-icon">~</span>
-                        <span>Real-time Preview</span>
-                    </div>
-                    <div class="feature">
-                        <span class="feature-icon">></span>
-                        <span>Download Ready</span>
-                    </div>
-                </div>
                 
                 <button id="startBtn" class="start-button">Start Generating</button>
             </div>
@@ -92,6 +79,16 @@
                         <div class="slider-group">
                             <label for="fontSize">Font Size: <span id="fontSizeValue">8</span>px</label>
                             <input type="range" id="fontSize" min="4" max="16" value="8">
+                        </div>
+                        <div class="slider-group">
+                            <label for="width">Width: <span id="widthValue">300</span> chars</label>
+                            <input type="range" id="width" min="50" max="500" value="300">
+                        </div>
+                        <div class="slider-group checkbox-group">
+                            <label>
+                                <input type="checkbox" id="invertColors">
+                                Invert
+                            </label>
                         </div>
                     </div>
                     <button id="generateBtn">Generate ASCII</button>
