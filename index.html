@@ -3,114 +3,350 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ASCII Portrait Generator</title>
+    <title>ASCII Portrait Studio - Turn Images Into Character Art</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
+    <meta name="description" content="Transform your photos into detailed ASCII portraits. Explore character sets, experiment with color, and export artwork in seconds.">
 </head>
 <body>
+    <!-- Landing Page -->
     <div id="landingPage" class="landing-page">
-        <div class="hero-content">
-            <div class="ascii-demo">
-                <pre>
- ╔════════════════════════════════════════╗
- ║                                        ║
- ║      ╔═══════════════════════════╗      ║
- ║      ║  $@B%8&WM#*oahkbdpqwmZ    ║      ║
- ║      ║  O0QLCJUYXzcvunxrjft/\|  ║      ║
- ║      ║  ()1{}[]?-_+~<>i!lI;:,"  ║      ║
- ║      ║  ^`'.                    ║      ║
- ║      ╚═══════════════════════════╝      ║
- ║                                        ║
- ╚════════════════════════════════════════╝
-                </pre>
+        <nav class="landing-nav">
+            <div class="nav-container">
+                <div class="nav-logo">
+                    <span class="logo-icon">▦</span>
+                    <span class="logo-text">ASCII Portrait Studio</span>
+                </div>
+                <div class="nav-links">
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="https://github.com/glairozz/ASCII_PortraitGenerator" target="_blank" rel="noopener" class="nav-link">GitHub</a>
+                    <button id="navStartBtn" class="nav-start-btn">Start Creating</button>
+                </div>
+                <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Menu">
+                    ☰
+                </button>
             </div>
-            
-            <div class="hero-text">
-                <h1 class="main-title">ASCII Portrait</h1>
-                <p class="subtitle">Transform photos into character art</p>
-                
-                <div class="features">
-                    <div class="feature">
-                        <span class="feature-icon">+</span>
-                        <span>70+ Character Mapping</span>
+        </nav>
+
+        <main class="landing-main">
+            <section class="hero">
+                <div class="hero-container">
+                    <div class="hero-content">
+                        <h1 class="hero-title">Turn Images Into Character Art</h1>
+                        <p class="hero-subtitle">
+                            Transform your photos into detailed ASCII portraits. Explore character sets, 
+                            experiment with color, fine-tune every detail, and export artwork in seconds.
+                        </p>
+                        <div class="hero-actions">
+                            <button id="heroStartBtn" class="btn btn-primary btn-large">Start Creating</button>
+                            <a href="#examples" class="btn btn-ghost btn-large">Explore Examples</a>
+                        </div>
                     </div>
-                    <div class="feature">
-                        <span class="feature-icon">*</span>
-                        <span>High Detail Output</span>
-                    </div>
-                    <div class="feature">
-                        <span class="feature-icon">~</span>
-                        <span>Real-time Preview</span>
-                    </div>
-                    <div class="feature">
-                        <span class="feature-icon">></span>
-                        <span>Download Ready</span>
+                    <div class="hero-visual">
+                        <div class="hero-ascii">
+<pre id="heroAsciiArt">╔══════════════════════════════════════════════════════════════╗
+║                                                              ║
+║                 ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄                   ║
+║               ▄▄  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄  ▄▄                 ║
+║             ▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄               ║
+║           ▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄             ║
+║         ▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄           ║
+║       ▄▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄▄         ║
+║     ▄▄▄▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄       ║
+║   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄  ▄▄▄▄▄  ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄     ║
+║ ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄      ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄   ║
+║   ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄            ▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄     ║
+║     ▄▄▄▄▄▄▄▄▄▄▄▄                ▄▄▄▄▄▄▄▄▄▄▄▄       ║
+║       ▄▄▄▄▄▄▄▄                    ▄▄▄▄▄▄▄▄         ║
+║         ▄▄▄▄▄                      ▄▄▄▄▄           ║
+║           ▄▄▄                        ▄▄▄             ║
+║             ▄                          ▄               ║
+╚══════════════════════════════════════════════════════════════╝</pre>
+                        </div>
                     </div>
                 </div>
-                
-                <button id="startBtn" class="start-button">Start Generating</button>
+            </section>
+
+            <section id="features" class="features-section">
+                <div class="section-container">
+                    <h2 class="section-title">Professional ASCII Studio</h2>
+                    <p class="section-subtitle">Everything you need to create stunning character art</p>
+                    <div class="features-grid">
+                        <div class="feature-card">
+                            <div class="feature-icon-large">⚡</div>
+                            <h3>High-Quality Rendering</h3>
+                            <p>Sharp portraits with improved tonal mapping, aspect ratio correction, and multiple character sets for professional results.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon-large">👁</div>
+                            <h3>Live Preview</h3>
+                            <p>See changes instantly as you adjust settings. Intelligent debouncing keeps everything smooth and responsive.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon-large">🎨</div>
+                            <h3>Color &amp; Monochrome</h3>
+                            <p>Create classic terminal green, cyberpunk themes, or full-color ASCII while preserving the original image's character.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon-large">🎛</div>
+                            <h3>Complete Control</h3>
+                            <p>Fine-tune brightness, contrast, gamma, output width, character sets, and more with precise numeric controls.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon-large">💾</div>
+                            <h3>Multiple Exports</h3>
+                            <p>Download as TXT, high-resolution PNG, or SVG. Copy to clipboard with a single click for instant sharing.</p>
+                        </div>
+                        <div class="feature-card">
+                            <div class="feature-icon-large">🔒</div>
+                            <h3>Private &amp; Offline</h3>
+                            <p>All processing happens entirely in your browser. No images are uploaded to servers - your artwork stays yours.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="examples" class="examples-section">
+                <div class="section-container">
+                    <h2 class="section-title">Creative Styles</h2>
+                    <p class="section-subtitle">Explore different artistic possibilities</p>
+                    <div class="examples-grid">
+                        <div class="example-card" data-preset="classic">
+                            <div class="example-preview mono">CLASSIC</div>
+                            <h4>Classic Monochrome</h4>
+                            <p>Timeless black and white character art</p>
+                        </div>
+                        <div class="example-card" data-preset="high-contrast">
+                            <div class="example-preview high-contrast">HIGH</div>
+                            <h4>High Contrast</h4>
+                            <p>Dramatic, bold silhouettes</p>
+                        </div>
+                        <div class="example-card" data-preset="terminal-green">
+                            <div class="example-preview terminal">TERMINAL</div>
+                            <h4>Terminal Green</h4>
+                            <p>Classic hacker aesthetic</p>
+                        </div>
+                        <div class="example-card" data-preset="cyberpunk">
+                            <div class="example-preview cyberpunk">CYBER</div>
+                            <h4>Cyberpunk</h4>
+                            <p>Neon-futuristic vibes</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="cta-section">
+                <div class="section-container">
+                    <h2 class="cta-title">Ready to Create?</h2>
+                    <p class="cta-subtitle">Start transforming your images into stunning ASCII art today</p>
+                    <button id="ctaStartBtn" class="btn btn-primary btn-large">Start Creating</button>
+                </div>
+            </section>
+        </main>
+
+        <footer class="landing-footer">
+            <div class="footer-container">
+                <div class="footer-info">
+                    <div class="footer-logo">
+                        <span class="logo-icon">▦</span>
+                        <span class="logo-text">ASCII Portrait Studio</span>
+                    </div>
+                    <p>Browser-based ASCII art generator. Privacy first, no uploads required.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="https://github.com/glairozz/ASCII_PortraitGenerator" target="_blank" rel="noopener">GitHub</a>
+                    <a href="#features">Features</a>
+                </div>
             </div>
-        </div>
-        
-        <div class="scroll-indicator">
-            <span>↓</span>
-            <p>Transform any image</p>
-        </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 ASCII Portrait Studio. All processing happens locally in your browser.</p>
+            </div>
+        </footer>
     </div>
 
-    <div id="generatorSection" class="generator-section" style="display: none;">
-        <div class="container">
-            <header>
-                <h1>ASCII Portrait Generator</h1>
-                <p>Transform images into character art</p>
-            </header>
-            
-            <main>
-                <div class="controls">
-                    <input type="file" id="imageInput" accept="image/*" />
-                    <div class="sliders">
-                        <div class="slider-group">
-                            <label for="brightness">Brightness: <span id="brightnessValue">50</span></label>
-                            <input type="range" id="brightness" min="-100" max="100" value="50">
+    <!-- Studio Section -->
+    <div id="studioSection" class="studio-section" style="display: none;">
+        <header class="studio-header">
+            <div class="studio-header-container">
+                <div class="studio-logo">
+                    <button id="studioBackBtn" class="studio-back-btn" aria-label="Back to home">←</button>
+                    <span class="logo-icon">▦</span>
+                    <span class="logo-text">ASCII Portrait Studio</span>
+                </div>
+                <div class="studio-header-actions">
+                    <button id="resetBtn" class="btn btn-ghost btn-small">Reset</button>
+                    <button id="copyBtn" class="btn btn-ghost btn-small">Copy ASCII</button>
+                    <button id="downloadMenuBtn" class="btn btn-primary btn-small">Export ▾</button>
+                </div>
+            </div>
+        </header>
+
+        <main class="studio-main">
+            <div class="studio-layout">
+                <!-- Left Panel -->
+                <aside class="left-panel">
+                    <section class="panel-section">
+                        <h3 class="panel-title">Image</h3>
+                        <div class="upload-area" id="uploadArea">
+                            <input type="file" id="imageInput" accept="image/*" hidden>
+                            <div class="upload-content">
+                                <div class="upload-icon">📁</div>
+                                <p class="upload-text">Drop image here or click to upload</p>
+                                <p class="upload-hint">JPG, PNG, WebP</p>
+                            </div>
                         </div>
-                        <div class="slider-group">
-                            <label for="contrast">Contrast: <span id="contrastValue">100</span></label>
-                            <input type="range" id="contrast" min="50" max="200" value="100">
+                        <div id="imageInfo" class="image-info" style="display: none;">
+                            <div class="info-row">
+                                <span>Name:</span>
+                                <span id="fileName">-</span>
+                            </div>
+                            <div class="info-row">
+                                <span>Size:</span>
+                                <span id="fileSize">-</span>
+                            </div>
+                            <div class="info-row">
+                                <span>Dimensions:</span>
+                                <span id="imgDimensions">-</span>
+                            </div>
+                            <button id="replaceImageBtn" class="btn btn-ghost btn-small btn-full">Replace Image</button>
                         </div>
-                        <div class="slider-group">
-                            <label for="fontSize">Font Size: <span id="fontSizeValue">8</span>px</label>
-                            <input type="range" id="fontSize" min="4" max="16" value="8">
-                        </div>
-                        <div class="slider-group">
-                            <label for="width">Width: <span id="widthValue">300</span> chars</label>
-                            <input type="range" id="width" min="50" max="500" value="300">
-                        </div>
-                        <div class="slider-group checkbox-group">
-                            <label>
-                                <input type="checkbox" id="invertColors">
-                                Invert
+                    </section>
+
+                    <section class="panel-section">
+                        <h3 class="panel-title">Preset</h3>
+                        <select id="presetSelect" class="select-input">
+                            <option value="custom">Custom</option>
+                            <option value="classic" selected>Classic Monochrome</option>
+                            <option value="high-contrast">High Contrast</option>
+                            <option value="fine-detail">Fine Detail</option>
+                            <option value="minimal">Minimal</option>
+                            <option value="terminal-green">Terminal Green</option>
+                            <option value="amber-terminal">Amber Terminal</option>
+                            <option value="cyberpunk">Cyberpunk</option>
+                            <option value="inverted">Inverted</option>
+                        </select>
+                    </section>
+
+                    <section class="panel-section">
+                        <h3 class="panel-title">Character Set</h3>
+                        <select id="charSetSelect" class="select-input">
+                            <option value="minimal">Minimal (@%#*+=-:. )</option>
+                            <option value="standard" selected>Standard (@%#*o+=-:. )</option>
+                            <option value="detailed">Detailed ($@B%8&WM#*...)</option>
+                            <option value="custom">Custom</option>
+                        </select>
+                        <input type="text" id="customCharInput" class="text-input" placeholder="Enter custom characters" style="display: none; margin-top: 8px;">
+                    </section>
+
+                    <section class="panel-section">
+                        <h3 class="panel-title">Output</h3>
+                        <div class="control-group">
+                            <label class="control-label" for="widthSlider">
+                                Width: <span id="widthValue">100</span> chars
                             </label>
+                            <input type="range" id="widthSlider" class="range-input" min="40" max="200" value="100" step="10">
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="fontSizeSlider">
+                                Font Size: <span id="fontSizeValue">6</span>px
+                            </label>
+                            <input type="range" id="fontSizeSlider" class="range-input" min="4" max="12" value="6" step="0.5">
+                        </div>
+                    </section>
+
+                    <section class="panel-section">
+                        <h3 class="panel-title">Image Adjustments</h3>
+                        <div class="control-group">
+                            <label class="control-label" for="brightnessSlider">
+                                Brightness: <span id="brightnessValue">0</span>
+                            </label>
+                            <input type="range" id="brightnessSlider" class="range-input" min="-100" max="100" value="0" step="5">
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="contrastSlider">
+                                Contrast: <span id="contrastValue">100</span>%
+                            </label>
+                            <input type="range" id="contrastSlider" class="range-input" min="50" max="200" value="100" step="5">
+                        </div>
+                        <div class="control-group">
+                            <label class="control-label" for="gammaSlider">
+                                Gamma: <span id="gammaValue">1.0</span>
+                            </label>
+                            <input type="range" id="gammaSlider" class="range-input" min="0.5" max="2.0" value="1.0" step="0.1">
+                        </div>
+                    </section>
+
+                    <section class="panel-section">
+                        <h3 class="panel-title">Color Mode</h3>
+                        <select id="colorModeSelect" class="select-input">
+                            <option value="monochrome" selected>Monochrome</option>
+                            <option value="color">Full Color</option>
+                            <option value="terminal-green">Terminal Green</option>
+                            <option value="terminal-amber">Terminal Amber</option>
+                            <option value="cyberpunk">Cyberpunk</option>
+                        </select>
+                        <label class="checkbox-label" style="margin-top: 10px; display: flex; align-items: center; gap: 8px;">
+                            <input type="checkbox" id="invertCheckbox">
+                            <span>Invert Luminance</span>
+                        </label>
+                    </section>
+                </aside>
+
+                <!-- Center Panel -->
+                <section class="center-panel">
+                    <div class="preview-header">
+                        <div class="preview-tabs">
+                            <button class="preview-tab active" data-view="ascii">ASCII Output</button>
+                            <button class="preview-tab" data-view="comparison">Before/After</button>
+                        </div>
+                        <div class="preview-controls">
+                            <button id="fitToScreenBtn" class="btn btn-ghost btn-small">Fit to Screen</button>
+                            <button id="zoomInBtn" class="btn btn-ghost btn-small">+</button>
+                            <button id="zoomOutBtn" class="btn btn-ghost btn-small">−</button>
+                            <span id="zoomLevel" class="zoom-level">100%</span>
                         </div>
                     </div>
-                    <button id="generateBtn">Generate ASCII</button>
-                    <button id="downloadBtn" style="display:none;">Download</button>
-                    <button id="backBtn" class="back-button">Back</button>
-                </div>
-                
-                <div class="preview-section">
-                    <div class="image-preview">
-                        <h3>Original</h3>
-                        <img id="previewImg" src="me.jpg" alt="Original" style="display:none;">
-                        <div id="defaultPreview">Upload an image or use default</div>
+
+                    <div class="preview-content" id="previewContent">
+                        <div id="asciiView" class="view active">
+                            <div id="emptyState" class="empty-state">
+                                <div class="empty-icon">🎨</div>
+                                <h3>Upload an Image</h3>
+                                <p>Drop an image to the left or click the upload area to get started</p>
+                            </div>
+                            <pre id="asciiResult" class="ascii-display" style="display: none;"></pre>
+                        </div>
+
+                        <div id="comparisonView" class="view">
+                            <div class="comparison-container">
+                                <canvas id="comparisonCanvas" class="comparison-canvas"></canvas>
+                                <div class="comparison-slider" id="comparisonSlider">
+                                    <div class="slider-handle"></div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    
-                    <div class="ascii-output">
-                        <h3>ASCII Portrait</h3>
-                        <pre id="asciiResult"></pre>
+
+                    <div class="preview-status">
+                        <div id="statusText" class="status-text">Ready</div>
+                        <div id="outputInfo" class="output-info"></div>
                     </div>
-                </div>
-            </main>
-        </div>
+                </section>
+            </div>
+        </main>
     </div>
+
+    <!-- Export Dropdown -->
+    <div id="exportDropdown" class="export-dropdown" style="display: none;">
+        <button class="export-item" data-export="txt">Download TXT</button>
+        <button class="export-item" data-export="png">Download PNG</button>
+        <button class="export-item" data-export="svg">Download SVG</button>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toastContainer" class="toast-container"></div>
 
     <script src="script.js"></script>
 </body>
